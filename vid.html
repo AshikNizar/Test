@@ -3,17 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Responsive Video Player</title>
-    <!-- Bootstrap CSS -->
-    <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
-    <!-- Video.js CSS -->
+    <title>Video Player</title>
     <link href="https://vjs.zencdn.net/7.20.3/video-js.css" rel="stylesheet" />
-    <!-- Video.js HLS Plugin -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/videojs-contrib-hls/5.15.0/videojs-contrib-hls.min.js"></script>
-    <!-- Video.js Script -->
     <script defer src="https://vjs.zencdn.net/7.20.3/video.min.js"></script>
     <style>
       body {
@@ -21,16 +12,22 @@
         font-family: Arial, sans-serif;
         background: linear-gradient(to right, #4e54c8, #8f94fb);
         color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      
+        width: 100%;
       }
 
       .container {
         text-align: center;
         max-width: 800px;
-        margin: 20px auto;
-        padding: 20px;
+        margin: auto;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
         background-color: rgba(255, 255, 255, 0.1);
         border-radius: 10px;
+        overflow: hidden;
+        padding: 20px;
       }
 
       h1 {
@@ -40,45 +37,46 @@
 
       p {
         font-size: 1em;
-        margin-bottom: 20px;
+        margin: 10px 0 20px;
+        line-height: 1.5;
       }
 
       video {
+        width: 100%;
+        height: auto;
         border-radius: 10px;
         outline: none;
+      }
+
+      @media (max-width: 768px) {
+        h1 {
+          font-size: 1.5em;
+        }
+        p {
+          font-size: 0.9em;
+        }
       }
     </style>
   </head>
   <body>
     <div class="container">
-      <h1>Welcome to the Video Player</h1>
-      <p>
-        Enjoy high-quality streaming. The player is fully responsive and
-        optimized for all devices.
-      </p>
-      <!-- Responsive Video Container -->
-      <div class="ratio ratio-16x9">
-        <video
-          id="my-video"
-          class="video-js w-100"
-          controls
-          preload="auto"
-          data-setup='{"techOrder":["html5"], "plugins": { "videojs-contrib-hls": {} }}'
-        >
-          <!-- HLS Video Source -->
-          <source
-            src="https://ythls.armelin.one/channel/UCup3etEdjyF1L3sRbU-rKLw.m3u8"
-            type="application/x-mpegURL"
-          />
-          <!-- Fallback Message -->
-          Your browser does not support HLS streaming. Please try using Safari or another compatible browser.
-        </video>
-      </div>
+      <h1>Video Player</h1>
+      
+      <video
+        id="my-video"
+        class="video-js"
+        controls
+        preload="auto"
+        width="640"
+        height="264"
+        data-setup="{}"
+      >
+        <source
+          src="https://ythls.armelin.one/channel/UCup3etEdjyF1L3sRbU-rKLw.m3u8"
+          type="application/x-mpegURL"
+        />
+        Your browser does not support the video tag.
+      </video>
     </div>
-
-    <!-- Bootstrap JS Bundle -->
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"
-    ></script>
   </body>
 </html>
